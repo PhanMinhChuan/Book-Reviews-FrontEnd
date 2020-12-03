@@ -29,12 +29,13 @@ import { IoLogoGithub } from "react-icons/io";
 import {useDispatch} from 'react-redux';
 import {ShowCat} from './redux/reduxCat.js';
 import {ShowBook} from './redux/reduxBook.js';
-
+import $ from 'jquery'; 
 
 
 
 
 function App() {
+  
   //let [post, setPost] = useState({});
 
   // useEffect(() => {
@@ -64,7 +65,9 @@ function App() {
   );
 }
 
-function Page() {
+
+
+function Page() { 
   return (
     <div>
       <header className="App-MenuTask-Me">
@@ -73,24 +76,33 @@ function Page() {
         <Link to="/dashboard">Dashboard</Link> 
         onClick={() => {dispatch(ShowCat())}}
         */}
+        
         <div class="cssSlideBar">
           <Link to="/" style={{ textDecoration: 'none',fontSize: '45px',color: 'darkcyan',  fontFamily: 'Charmonman',fontSize: '40px', marginLeft: '40px'}}><strong>ADMIN</strong></Link>
           <hr style={{ marginTop: '20px', backgroundColor:'azure'}}/>
-          <Link to="/" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}}><div class="iconTasks"><AiOutlineHome class="iconMe"/>Home</div></Link>
-          <Link to="/cat" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}} ><div class="iconTasks"><BiDuplicate class="iconMe"/>Categories</div></Link>
-          <Link to="/book" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}} ><div class="iconTasks"><BiBook class="iconMe"/>Book</div></Link>
-          <Link to="/author" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}}><div class="iconTasks"><FaUserEdit class="iconMe" />Authors</div></Link>
-          <Link to="/user" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}}><div class="iconTasks"><VscAccount class="iconMe"/>User</div></Link>
-          <Link to="/comment" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}}><div class="iconTasks"><BiCommentDetail class="iconMe"/>Comments</div></Link>
-          <Link to="/contact" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}}><div class="iconTasks"><AiFillContacts class="iconMe"/>Contact</div></Link>
+          <Link to="/" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}} ><span><div class="iconTasks" id="iconTasks1"><AiOutlineHome class="iconMe"/>Home</div></span></Link>
+          <Link to="/cat" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}}><div class="iconTasks" id="iconTasks2"><BiDuplicate class="iconMe"/>Categories</div></Link>
+          <Link to="/book" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}} ><div class="iconTasks" id="iconTasks3"><BiBook class="iconMe"/>Book</div></Link>
+          <Link to="/author" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}}><div class="iconTasks" id="iconTasks4"><FaUserEdit class="iconMe" />Authors</div></Link>
+          <Link to="/user" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}}><div class="iconTasks" id="iconTasks5"><VscAccount class="iconMe"/>User</div></Link>
+          <Link to="/comment" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}}><div class="iconTasks" id="iconTasks6"><BiCommentDetail class="iconMe"/>Comments</div></Link>
+          <Link to="/contact" style={{ textDecoration: 'none',fontSize: '20px',color: 'white'}} ><div class="iconTasks" id="iconTasks7"><AiFillContacts class="iconMe"/>Contact</div></Link>
         </div>
         
       </header>
       <header className="App-header-Me">
         <button class="btnLogin">Log Out</button>
-        <span class="usernameLogin">Minh Chuẩn</span>
+        <span class="usernameLogin">Minh Chuan</span>
         <span class="iconLogin"><img src="https://www.festivalinfo.nl/img/upload/c/b/shawn_mendes.jpg"  style={{ height: '50px', width: '50px', borderRadius: "50%"}}/></span>
       </header>
+      <div className="App-header-posion">
+        <header className="App-header-Me">
+        <button class="btnLogin">Log Out</button>
+        <span class="usernameLogin">Minh Chuan</span>
+        <span class="iconLogin"><img src="https://www.festivalinfo.nl/img/upload/c/b/shawn_mendes.jpg"  style={{ height: '50px', width: '50px', borderRadius: "50%"}}/></span>
+        </header>
+      </div>
+      
       <main class="main-Me">
         <Switch>
           <Route exact path="/" component= {Home} />

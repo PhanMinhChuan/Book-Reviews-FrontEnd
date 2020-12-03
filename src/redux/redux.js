@@ -42,6 +42,9 @@ export function reducer(state = defaultState, action) {
         case 'showUser': 
             state = action.payload;
             return state;
+        case 'getUserObject':
+            var user = action.payload;
+            return user
         case 'changeListUserByIndex':
             state = action.payload;
             return state

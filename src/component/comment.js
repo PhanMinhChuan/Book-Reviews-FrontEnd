@@ -7,8 +7,13 @@ import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from "react-icons/bs";
 import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {ShowComments, GetCommentSize, ChangeListCommentByPageIndex, delFunc} from '../redux/reduxComment.js';
+import $ from 'jquery'; 
 
 function Comment() {
+  $(document).ready(function(){
+    $(".iconTasks").css("background-color", "");
+    $("#iconTasks6").css("background-color", "rgba(0, 134, 60, 0.644)");
+  });
 
   const dispatch = useDispatch(); 
   let [comment, setComment] = useState({});

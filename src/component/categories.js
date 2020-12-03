@@ -11,9 +11,13 @@ import Axios from 'axios';
 import proxy from 'http-proxy-middleware';
 import {useSelector, useDispatch} from 'react-redux';
 import {ShowCat, GetListCat , ShowCatSize, ChangeListCatByPageIndex, GetIndexPage, delFunc} from '../redux/reduxCat.js';
+import $ from 'jquery'; 
 
 function Categories() {
-  
+  $(document).ready(function(){
+    $(".iconTasks").css("background-color", "");
+    $("#iconTasks2").css("background-color", "rgba(0, 134, 60, 0.644)");
+  });
   //const dispatch = useDispatch(); 
   //const listCat = useSelector(state => state);
   //console.log(listCat);

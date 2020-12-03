@@ -15,7 +15,7 @@
 
 .App-MenuTask-Me {
   background-color: #2d2e31;
-  min-height: 1020px;
+  min-height: 1120px;
   float: left;
   width: 13%;
   margin-top: -25px;
@@ -34,6 +34,15 @@
   float: left;
   min-height: 5vh;
   width: 87%;
+  text-align: center;
+}
+
+.App-header-posion {
+  position: fixed;
+  left: 248px;
+  float: left;
+  min-height: 5vh;
+  width: 100%;
   text-align: center;
 }
 
@@ -63,12 +72,15 @@
   height: 70px;
   padding-top: 22px;
   padding-left: 47px;
-  display:block;
-  
 }
+
  
-.iconTasks:hover, 
-.iconTasks:focus{
+.iconTasks:hover {
+  display: block;
+  background-color: rgba(0, 134, 60, 0.644);
+}
+
+.iconTasks:focus-visible{
   background-color: rgba(0, 134, 60, 0.644);
 }
 
@@ -226,7 +238,19 @@ tr:nth-child(even) {
   border: 1px solid;
   padding-left: 75px;
   padding-top: 32px;
-  height: 484px;
+  height: 490px;
+  border-radius: 6%;
+}
+
+.formDataBookContact{
+  margin-top: 60px;
+  margin-left: 50px;
+  width: 93%;
+  border: 1px solid;
+  padding-left: 75px;
+  padding-top: 32px;
+  height: 800px;
+  border-radius: 6%;
 }
 
 .homeData {
@@ -271,9 +295,13 @@ tr:nth-child(even) {
 }
 
 .selectCss {
-  width: 425px;
+  width: 500px;
   border: 1px solid;
   margin-top: -3px;
+}
+
+.editorCss {
+  width: 1280px;
 }
 
 @keyframes App-logo-spin {

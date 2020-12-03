@@ -264,7 +264,6 @@ export function delFunc(id) {
     .catch(function (error) {
       console.log(error);
     })
-
 }
 
 export function addFunc(catName) {

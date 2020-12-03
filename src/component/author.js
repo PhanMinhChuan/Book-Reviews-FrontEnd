@@ -11,6 +11,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import {ShowAuthors, GetAuthorSize, ChangeListAuthorByPageIndex} from '../redux/reduxAuthor.js';
 
 function Author() {
+  $(document).ready(function(){
+    $(".iconTasks").css("background-color", "");
+    $("#iconTasks4").css("background-color", "rgba(0, 134, 60, 0.644)");
+  });
+
 
   const dispatch = useDispatch(); 
   let [author, setAuthor] = useState({});

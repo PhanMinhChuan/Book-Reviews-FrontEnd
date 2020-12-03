@@ -8,9 +8,14 @@ import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from "react-icons/bs";
 
 import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {ShowUsers, GetUserSize, ChangeListUserByPageIndex} from '../redux/reduxUser.js';
+import {ShowUsers, GetUserSize, ChangeListUserByPageIndex, DeletedUserFunc} from '../redux/reduxUser.js';
+import $ from 'jquery'; 
 
 function User() {
+  $(document).ready(function(){
+    $(".iconTasks").css("background-color", "");
+    $("#iconTasks5").css("background-color", "rgba(0, 134, 60, 0.644)");
+  });
 
   const dispatch = useDispatch(); 
   let [user, setUser] = useState({});
@@ -32,8 +37,6 @@ function User() {
             } else {
               bookName += "["+item.books[i].name +"]";
             }
-            
-            
           }
         }
         if (item.username !== "admin") {
@@ -43,8 +46,9 @@ function User() {
                   <td>{item.username}</td>
                   <td>{item.password}</td>
                   <td>{bookName}</td>
+                  <td>{item.role}</td>
                   <td>
-                    <button class="deletedBtn"><AiFillDelete/></button>
+                    <button class="deletedBtn" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?'))  DeletedUserFunc(item.id) }}><AiFillDelete/></button>
                     <Link to={`/userChange/${item.id}`} ><button class="updatedBtn"><GrUpdate/></button></Link>
                   </td>
                   </tr>
@@ -56,6 +60,7 @@ function User() {
             <td>{item.username}</td>
             <td>{item.password}</td>
             <td>{bookName}</td>
+            <td>{item.role}</td>
             <td>
             </td>
             </tr>
@@ -95,9 +100,10 @@ function User() {
       <table>
         <tr>
           <th style={{width:'10%'}}>Id</th>
-          <th style={{width:'15%'}}>Username</th>
-          <th style={{width:'25%'}}>Password</th>
+          <th style={{width:'10%'}}>Username</th>
+          <th style={{width:'20%'}}>Password</th>
           <th style={{width:'25%'}}>Books</th>
+          <th style={{width:'10%'}}>Role</th>
           <th style={{width:'15%'}}>Function</th>
         </tr>
         {getUser()}

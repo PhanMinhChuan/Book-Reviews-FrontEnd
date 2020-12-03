@@ -4,8 +4,13 @@ import { VscAccount } from "react-icons/vsc";
 import { AiFillContacts, AiOutlineHome, AiOutlineUserAdd} from "react-icons/ai";
 import { BiCommentDetail, BiBook, BiDuplicate} from "react-icons/bi";
 import { FaUserEdit, FaUserCircle} from "react-icons/fa";
+import $ from 'jquery'; 
 
 function Home() {
+  $(document).ready(function(){
+    $(".iconTasks").css("background-color", "");
+    $("#iconTasks1").css("background-color", "rgba(0, 134, 60, 0.644)");
+  });
     return (
       <>
         <div class= "formData">

@@ -8,8 +8,13 @@ import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from "react-icons/bs";
 
 import {useState} from 'react';
 import {ShowContact} from '../redux/reduxContact.js';
+import $ from 'jquery'; 
 
 function Contact() {
+  $(document).ready(function(){
+    $(".iconTasks").css("background-color", "");
+    $("#iconTasks7").css("background-color", "rgba(0, 134, 60, 0.644)");
+  });
 
   const dispatch = useDispatch(); 
   let [contact, setContact] = useState({});

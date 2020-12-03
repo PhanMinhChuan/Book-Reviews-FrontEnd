@@ -9,9 +9,14 @@ import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from "react-icons/bs";
 import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {ShowBooks, GetBookSize, ChangeListBookByPageIndex} from '../redux/reduxBook.js';
+import $ from 'jquery'; 
 
 
 function Book() {
+  $(document).ready(function(){
+    $(".iconTasks").css("background-color", "");
+    $("#iconTasks3").css("background-color", "rgba(0, 134, 60, 0.644)");
+  });
   
 
   const dispatch = useDispatch(); 
@@ -99,9 +104,7 @@ function Book() {
       </table>
       </div>
       <div class="phantrangMe">
-            <button class="phanTrangBtn" ><Link to="#"><BsFillSkipBackwardFill /></Link></button>
                   {paginationFunc()}
-            <button class="phanTrangBtn"><Link to="#"><BsFillSkipForwardFill/></Link></button>
       </div>
     </>    
   );

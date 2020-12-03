@@ -5,7 +5,7 @@ import Axios from 'axios';
 
 export function ShowBooks() {
     return async(dispatch) => {
-        Axios.get('http://localhost:8080/books?page=0&size=5',  {
+        Axios.get('http://localhost:8080/books?page=0&size=6',  {
             method: 'GET',
             data: {},
             headers: {
@@ -47,7 +47,7 @@ export function GetBookSize() {
 
 export function ChangeListBookByPageIndex(id) {
     return async(dispatch) => {
-        Axios.get('http://localhost:8080/books?page=' + (id-1)+ '&size=5', {
+        Axios.get('http://localhost:8080/books?page=' + (id-1)+ '&size=6', {
             method: 'GET',
             data: {},
             headers: {

@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 export function ShowUsers() {
     return async(dispatch) => {
-        Axios.get('http://localhost:8080/users',  {
+        Axios.get('http://localhost:8080/users?page=0&size=5',  {
             method: 'GET',
             data: {},
             headers: {
@@ -44,7 +44,7 @@ export function GetUserSize() {
 
 export function ChangeListUserByPageIndex(id) {
     return async(dispatch) => {
-        Axios.get('http://localhost:8080/users?page=' + (id-1)+ '&size=7', {
+        Axios.get('http://localhost:8080/users?page=' + (id-1)+ '&size=5', {
             method: 'GET',
             data: {},
             headers: {
@@ -63,4 +63,58 @@ export function loadListUserByPageIndex(listUser) {
         type: 'changeListUserByIndex',
         payload: listUser
     }
+}
+
+export function DeletedUserFunc(id) {
+    Axios.delete('http://localhost:8080/users/' + id, {
+      headers: {
+        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+      },
+    })
+    .then(function (response) {
+      window.location = "/user";
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+}
+
+export function GetObjectUserById(id) {
+    return async(dispatch) => {
+        Axios.get('http://localhost:8080/users/' + id,  {
+            method: 'GET',
+            data: {},
+            headers: {
+                "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(function (responds) {
+                dispatch(GetUser(responds.data));
+            })
+    }
+}
+
+export function GetUser (userObject) {
+    return {
+        type: "getUserObject",
+        payload: userObject
+    }
+}
+
+export function AddUserFunc(username, password) {
+    var data = {username: username, password: password};
+    Axios.post('http://localhost:8080/users', JSON.stringify(data),{
+      headers: {
+        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        'Content-Type': 'application/json'
+      },
+      })
+      .then(function (response) {
+        alert("add Working!");
+        window.location = "/user";
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
 }
