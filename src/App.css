@@ -1,0 +1,286 @@
+.App {
+  /* text-align: center; */
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-MenuTask-Me {
+  background-color: #2d2e31;
+  min-height: 1020px;
+  float: left;
+  width: 13%;
+  margin-top: -25px;
+}
+.App-header-Me {
+  background-color: rgba(0, 134, 60, 0.644);
+  min-height: 7vh;
+  float: left;
+  width: 87%;
+}
+
+.App-footer-Me {
+  position: fixed;
+  left: 248px;
+  bottom: 0;
+  float: left;
+  min-height: 5vh;
+  width: 87%;
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.cssSlideBar {
+  margin-top: 40px;
+  padding-top: 17px;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.iconTasks {
+  /* margin-top: 40px;
+  margin-left: 45px; */
+  height: 70px;
+  padding-top: 22px;
+  padding-left: 47px;
+  display:block;
+  
+}
+ 
+.iconTasks:hover, 
+.iconTasks:focus{
+  background-color: rgba(0, 134, 60, 0.644);
+}
+
+.btnLogin{
+  height: 40px;
+  width: 90px;
+  float: right;
+  margin-right: 26px;
+  margin-top: 14px;
+  margin-bottom: 16px;
+  background-color: rgb(235, 203, 161);
+}
+
+.btnLogin:hover{
+  background-color: rgba(236, 65, 59, 0.644);
+}
+
+.usernameLogin {
+  float: right;
+  margin-top: 14px;
+  margin-right: 17px;
+  font-size: 32px;
+  color: rgb(244, 250, 250);
+  font-family: 'Allura'
+}
+
+.main-Me {
+  height: 580px;
+  /* background-color: coral; */
+  float: left;
+  margin-top: 30px;
+  margin-left: 48px;
+  width: 82%;
+}
+
+.titleNameForm {
+  float: left;
+  margin-left: 25px;
+  display: block;
+}
+
+.formData {
+  width: 95%;
+  margin-left: 40px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.deletedBtn {
+  height: 39px;
+  width: 57px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: rgb(245, 175, 90);
+  font-size: 16px;
+}
+
+.updatedBtn {
+  height: 39px;
+  width: 61px;
+  background-color: rgb(245, 94, 174);
+}
+
+.btnHome {
+  height: 227px;
+  width: 257px;
+  margin-right: 129px;
+  border-radius: 25%;
+} 
+
+.btnHome:hover {
+  background-color: rgb(13, 187, 85);
+}
+
+.addBtn {
+  float: right;
+  margin-right: 57px;
+  margin-bottom: 6px;
+  font-size: 41px;
+  color: rgb(36, 22, 22);
+}
+
+.container111 {
+  width: 500px;
+  margin: auto;
+  float: right;
+}
+.pagination {
+  width: 400px;
+  margin-top: 55px;
+}
+.pagination a {
+  display: block;
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  height: 45px;
+  width: 50px;
+}
+ 
+.pagination a.active {
+  background-color: black;
+  color: black;
+}
+   
+.pagination a:hover:not(.active) {
+  background-color: rgb(17, 4, 4);
+}
+
+.phanTrangBtn {
+  border: 1px solid black;
+  margin-left: 3px;
+  height: 50px;
+  width: 53px;
+  text-align: center;
+}
+
+.phanTrangBtn:hover {
+  background-color: rgb(13, 187, 85);
+}
+
+.phanTrangBtn:focus {
+  background-color: rgb(13, 187, 85);
+}
+
+.formDataAddCat{
+  margin-top: 60px;
+  margin-left: 50px;
+  width: 42%;
+  border: 1px solid;
+  padding-left: 75px;
+  padding-top: 60px;
+  height: 254px;
+}
+
+.formDataAddContact{
+  margin-top: 60px;
+  margin-left: 50px;
+  width: 42%;
+  border: 1px solid;
+  padding-left: 75px;
+  padding-top: 32px;
+  height: 484px;
+}
+
+.homeData {
+  text-align: center;
+  margin-top: 150px;
+  margin-left: 78px;
+}
+
+.iconMe {
+  color: darkgray;
+  font-size: 25px;
+  margin-right: 17px;
+  margin-bottom: 4px;
+}
+
+.iconLogin {
+  margin-top: 3px;
+  float: right;
+  /* height: 55px; */
+  font-size: 40px;
+  margin-right: 15px;
+}
+
+.homeIcon {
+  font-size: 125px;
+  color: black;
+}
+
+.phantrangMe {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.overflow-ellipsis {
+  width: 200px;
+  height: 65px;
+  overflow: hidden;
+}
+
+.borderCss {
+  border: 2px solid;
+}
+
+.selectCss {
+  width: 425px;
+  border: 1px solid;
+  margin-top: -3px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
