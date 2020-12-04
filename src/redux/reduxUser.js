@@ -118,3 +118,29 @@ export function AddUserFunc(username, password) {
         console.log(error);
       })
 }
+
+export function UpdateBookFunc(index, listBookName) {
+    var listBookNameParse = [];
+    //console.log(listBookName);
+    for(var i = 0; i < listBookName.length; i++) {
+        //console.log(listIdBook[i]);
+        //listIdBook.push({id: listIdBook[i].id})
+        listBookNameParse.push(listBookName[i].Country);
+    }
+
+    var data = {fruits: listBookNameParse};
+    //console.log(JSON.stringify(data));
+    Axios.put('http://localhost:8080/users/' + index, JSON.stringify(data),{
+      headers: {
+        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        'Content-Type': 'application/json'
+      },
+      })
+      .then(function (response) {
+        alert("update Working!");
+        window.location = "/user";
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+}

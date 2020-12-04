@@ -29,13 +29,12 @@ import { IoLogoGithub } from "react-icons/io";
 import {useDispatch} from 'react-redux';
 import {ShowCat} from './redux/reduxCat.js';
 import {ShowBook} from './redux/reduxBook.js';
-import $ from 'jquery'; 
-
+import './signin.css'
+import {CheckApiLogin} from './redux/reduxLogin.js';
 
 
 
 function App() {
-  
   //let [post, setPost] = useState({});
 
   // useEffect(() => {
@@ -52,31 +51,19 @@ function App() {
   //   })
   // })
   return (
-    <div className="App">
-      <Router>
-        <Page />
-        <div>
-          {/* <h1>{post.title}</h1>
-          <p>{post.author}</p> */}
-        </div>
-      </Router>
-    </div>
-    
+    <Router>
+      <Page />
+    </Router>
   );
 }
 
-
-
-function Page() { 
-  return (
+function Page() {
+  var index = localStorage.getItem('loginIndex');
+  console.log(index);
+  if (index == 1) {
+    return (
     <div>
       <header className="App-MenuTask-Me">
-        {/* <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/dashboard">Dashboard</Link> 
-        onClick={() => {dispatch(ShowCat())}}
-        */}
-        
         <div class="cssSlideBar">
           <Link to="/" style={{ textDecoration: 'none',fontSize: '45px',color: 'darkcyan',  fontFamily: 'Charmonman',fontSize: '40px', marginLeft: '40px'}}><strong>ADMIN</strong></Link>
           <hr style={{ marginTop: '20px', backgroundColor:'azure'}}/>
@@ -90,14 +77,11 @@ function Page() {
         </div>
         
       </header>
-      <header className="App-header-Me">
-        <button class="btnLogin">Log Out</button>
-        <span class="usernameLogin">Minh Chuan</span>
-        <span class="iconLogin"><img src="https://www.festivalinfo.nl/img/upload/c/b/shawn_mendes.jpg"  style={{ height: '50px', width: '50px', borderRadius: "50%"}}/></span>
+      <header className="App-header-Me-ver2">
       </header>
       <div className="App-header-posion">
         <header className="App-header-Me">
-        <button class="btnLogin">Log Out</button>
+        <button class="btnLogin" onClick={() => CheckApiLogin(0)}>Log Out</button>
         <span class="usernameLogin">Minh Chuan</span>
         <span class="iconLogin"><img src="https://www.festivalinfo.nl/img/upload/c/b/shawn_mendes.jpg"  style={{ height: '50px', width: '50px', borderRadius: "50%"}}/></span>
         </header>
@@ -126,13 +110,67 @@ function Page() {
       <footer className="App-footer-Me">
       <p>2020 © Ample Admin brought to you by Minh Chuan |  <IoLogoGithub/></p>
       </footer>
-      
-      {/* <footer>
-        footer Page
-      </footer> */}
     </div>
     
-  )
+    )
+  } else {
+    return (
+    <>
+      <div>
+          <div className="signin-body">
+              <div href="/signin" className="container-sigin" id="container">
+                  <div className="form-container sign-in-container">
+                      <div className="form-signin">
+                          <h3 style={{color:'#FF0059'}}>LOGIN ADMIN</h3><br/>
+                          <input className="signin-input-thongtin" type="email" placeholder="Email" />
+                          <input className="signin-input-thongtin" type="password" placeholder="Password" />
+                          <a className="a-Forgotyourpassword">Forgot your password?</a><br/>
+                          <button className="button-signin-signup" onClick={() => CheckApiLogin(1)}>Sign In</button>
+                      </div>
+                  </div>
+                  <div className="overlay-container">
+                      <div className="overlay">
+                          <div className="overlay-panel overlay-right">
+                              <h1>Hello, Friend!</h1>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </>
+    )
+  }
+  
 }
+
+// function LoginPage() {
+//   return (
+//     <>
+//       <div>
+//           <div className="signin-body">
+//               <div href="/signin" className="container-sigin" id="container">
+//                   <div className="form-container sign-in-container">
+//                       <div className="form-signin">
+//                           <h3 style={{color:'#FF0059'}}>LOGIN ADMIN</h3><br/>
+//                           <input className="signin-input-thongtin" type="email" placeholder="Email" />
+//                           <input className="signin-input-thongtin" type="password" placeholder="Password" />
+//                           <a className="a-Forgotyourpassword">Forgot your password?</a><br/>
+//                           <button className="button-signin-signup" onClick={App2}>Sign In</button>
+//                       </div>
+//                   </div>
+//                   <div className="overlay-container">
+//                       <div className="overlay">
+//                           <div className="overlay-panel overlay-right">
+//                               <h1>Hello, Friend!</h1>
+//                           </div>
+//                       </div>
+//                   </div>
+//               </div>
+//           </div>
+//       </div>
+//     </>
+//   )
+// }
 
 export default App;

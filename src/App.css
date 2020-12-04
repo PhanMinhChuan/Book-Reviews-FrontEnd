@@ -15,13 +15,19 @@
 
 .App-MenuTask-Me {
   background-color: #2d2e31;
-  min-height: 1120px;
+  min-height: 1250px;
   float: left;
   width: 13%;
   margin-top: -25px;
 }
 .App-header-Me {
   background-color: rgba(0, 134, 60, 0.644);
+  min-height: 7vh;
+  float: left;
+  width: 87%;
+}
+
+.App-header-Me-ver2 {
   min-height: 7vh;
   float: left;
   width: 87%;
@@ -44,6 +50,7 @@
   min-height: 5vh;
   width: 100%;
   text-align: center;
+  z-index: 9999;
 }
 
 .App-header {
@@ -114,6 +121,7 @@
   margin-top: 30px;
   margin-left: 48px;
   width: 82%;
+  position: relative;
 }
 
 .titleNameForm {
@@ -143,19 +151,45 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.deletedBtn {
-  height: 39px;
+.acceptBtn {
+  height: 48px;
   width: 57px;
-  margin-left: 20px;
   margin-right: 20px;
-  background-color: rgb(245, 175, 90);
-  font-size: 16px;
+  background-color: rgb(251, 220, 39);
+  font-size: 26px;
+}
+
+.UnacceptBtn {
+  height: 48px;
+  width: 57px;
+  margin-right: 20px;
+  background-color: rgb(13, 187, 85);
+  font-size: 26px;
+}
+
+.deletedBtBook {
+  height: 48px;
+  width: 57px;
+  margin-right: 20px;
+  background-color: rgb(247, 107, 83);
+  font-size: 26px;
+}
+
+.deletedBtn {
+  height: 48px;
+  width: 57px;
+  margin-right: 20px;
+  background-color: rgb(247, 107, 83);
+  font-size: 26px;
+  margin-left: 16px;
 }
 
 .updatedBtn {
-  height: 39px;
+  height: 48px;
   width: 61px;
-  background-color: rgb(245, 94, 174);
+  font-size: 25px;
+  /* background-color: rgb(103, 214, 241); */
+  background-color: #5bc0de
 }
 
 .btnHome {
@@ -211,6 +245,7 @@ tr:nth-child(even) {
   height: 50px;
   width: 53px;
   text-align: center;
+  border-radius: 11%;
 }
 
 .phanTrangBtn:hover {
@@ -223,34 +258,46 @@ tr:nth-child(even) {
 
 .formDataAddCat{
   margin-top: 60px;
-  margin-left: 50px;
-  width: 42%;
-  border: 1px solid;
-  padding-left: 75px;
-  padding-top: 60px;
-  height: 254px;
+    margin-left: 50px;
+    width: 40%;
+    border: 1px dashed;
+    padding-left: 75px;
+    padding-top: 60px;
+    border-radius: 4%;
+    height: 254px;
 }
 
 .formDataAddContact{
   margin-top: 60px;
   margin-left: 50px;
   width: 42%;
-  border: 1px solid;
-  padding-left: 75px;
-  padding-top: 32px;
-  height: 490px;
-  border-radius: 6%;
+  border: 1px dashed;
+  padding-left: 67px;
+  padding-top: 40px;
+  height: 440px;
+  border-radius: 5%;
+}
+
+.formDataAuthorContact{
+  margin-top: 60px;
+  margin-left: 50px;
+  width: 42%;
+  border: 1px dashed;
+  padding-left: 67px;
+  padding-top: 40px;
+  height: 540px;
+  border-radius: 5%;
 }
 
 .formDataBookContact{
-  margin-top: 60px;
+  margin-top: 50px;
   margin-left: 50px;
   width: 93%;
-  border: 1px solid;
+  border: 1px dashed;
   padding-left: 75px;
-  padding-top: 32px;
-  height: 800px;
-  border-radius: 6%;
+  padding-top: 32px; 
+  height: 950px;
+  border-radius: 3%;
 }
 
 .homeData {
@@ -279,9 +326,52 @@ tr:nth-child(even) {
   color: black;
 }
 
+.phantrangBook {
+  margin-top: 50px;
+  text-align: center;
+  position: absolute;
+  bottom: -150px;
+  margin-left: 715px;
+}
+
+.phantrangUser {
+  margin-top: 50px;
+  text-align: center;
+  position: absolute;
+  bottom: -170px;
+  margin-left: 715px;
+}
+
 .phantrangMe {
   margin-top: 50px;
   text-align: center;
+  position: absolute;
+  bottom: -150px;
+  margin-left: 715px;
+}
+
+.phantrangCategory {
+  margin-top: 50px;
+  text-align: center;
+  position: absolute;
+  bottom: -200px;
+  margin-left: 715px;
+}
+
+.phantrangAuthor {
+  margin-top: 50px;
+  text-align: center;
+  position: absolute;
+  bottom: -210px;
+  margin-left: 715px;
+}
+
+.phantrangComment {
+  margin-top: 50px;
+  text-align: center;
+  position: absolute;
+  bottom: -140px;
+  margin-left: 690px;
 }
 
 .overflow-ellipsis {
@@ -302,6 +392,7 @@ tr:nth-child(even) {
 
 .editorCss {
   width: 1280px;
+  border: 1px solid;
 }
 
 @keyframes App-logo-spin {

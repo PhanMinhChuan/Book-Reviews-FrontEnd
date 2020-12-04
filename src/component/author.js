@@ -9,12 +9,20 @@ import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from "react-icons/bs";
 import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {ShowAuthors, GetAuthorSize, ChangeListAuthorByPageIndex} from '../redux/reduxAuthor.js';
+import $ from 'jquery';
 
 function Author() {
   $(document).ready(function(){
     $(".iconTasks").css("background-color", "");
     $("#iconTasks4").css("background-color", "rgba(0, 134, 60, 0.644)");
+    $("#index1").css("background-color", "rgb(13, 187, 85)");
   });
+
+  function changeColorBtn() {
+    setTimeout(function(){
+      $("#index1").css("background-color", "");
+    }, 100);
+  }
 
 
   const dispatch = useDispatch(); 
@@ -63,8 +71,9 @@ function Author() {
 
     return (
       arr.map((item, index) => {
+        var idStr = "index" + item;
         return (
-          <button class="phanTrangBtn" onClick={() => {dispatch(ChangeListAuthorByPageIndex(item))}}>{item}</button>
+          <button class="phanTrangBtn" id={idStr} onClick={() => {dispatch(ChangeListAuthorByPageIndex(item)); changeColorBtn()}}>{item}</button>
         )
       })
     )
@@ -91,7 +100,7 @@ function Author() {
       </table>
 
       </div>
-      <div class="phantrangMe">
+      <div class="phantrangAuthor">
             {paginationFunc()}
             {/* <button class="phanTrangBtn" ><Link to="#"><BsFillSkipBackwardFill /></Link></button>
             

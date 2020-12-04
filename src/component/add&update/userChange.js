@@ -3,13 +3,18 @@ import {userRouteMatch, useParams} from "react-router-dom";
 import Axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import { Multiselect } from 'multiselect-react-dropdown';
-import {GetObjectUserById, AddUserFunc } from '../../redux/reduxUser.js';
+import {GetObjectUserById, AddUserFunc, UpdateBookFunc } from '../../redux/reduxUser.js';
+import {GetBookListFromDB} from '../../redux/reduxBook.js';
 
 function UserChange( {match} ) {
 
     const username = useRef();
     const password = useRef();
+    const listIdBook = useRef();
 
+    var listNameBook = GetBookListFromDB();
+    
+    //Get List Book From Object User
     const dispatch = useDispatch(); 
     let [usersObject, setUser] = useState();
     useEffect(() => {
@@ -20,14 +25,13 @@ function UserChange( {match} ) {
 
     const user = useSelector(state => state);
 
-    const data = [];
+    const valueDefaulBookList = []
+
     if (user.books != null) {
         for(var i = 0; i< user.books.length; i++) {
-            data.push({Country: user.books[i].name, id: i+1});
+            valueDefaulBookList.push({Country: user.books[i].name, id: i+1});
         }
     }
-    
-    const [options] = useState(data);
 
     if (match.params.id == null) {
         return (
@@ -38,10 +42,9 @@ function UserChange( {match} ) {
             </div><br/><br/>
             <div class="formDataAddContact"><br/><br/>
                 <label for="exampleInputCat">Username (*)</label><br/>
-                <input name="name" type="text" id="exampleInputEmail1" style={{ width: '500px', marginBottom: "20px", height: '45px'}} placeholder="Username" ref={username}></input> &ensp;<br/>
-                {/* <label for="exampleInputCat">Password (*)</label><br/>
-                <input name="name" type="text" id="exampleInputEmail1" style={{ width: '425px', marginBottom: "20px", height: '45px'}} placeholder="Password" ref={password}></input> &ensp;<br/>
-                <br/> */}
+                <input name="name" type="text" id="exampleInputEmail1" style={{ width: '500px', marginBottom: "20px", height: '35px'}} placeholder="Username" ref={username}></input> &ensp;<br/>
+                <label for="exampleInputCat">Password (*)</label><br/>
+                <input name="name" type="password" id="exampleInputEmail1" style={{ width: '500px', marginBottom: "25px", height: '35px'}} placeholder="Password" ref={password}></input> &ensp;<br/>
                 <button onClick={() => AddUserFunc(username.current.value, password.current.value)}>Add</button>
             </div>
             </>
@@ -56,12 +59,17 @@ function UserChange( {match} ) {
             <div class="formDataAddContact">
                 <label for="exampleInputCat">Username (*)</label><br/>
                 <input name="name" type="text" id="exampleInputEmail1" style={{ width: '500px', marginBottom: "20px", height: '45px'}} defaultValue={user.username} disabled></input> &ensp;<br/>
-                {/* <label for="exampleInputCat">Password (*)</label><br/>
-                <input name="name" type="text" id="exampleInputEmail1" style={{ width: '425px', marginBottom: "20px", height: '45px'}} defaultValue={user.password} ></input> &ensp;<br/> */}
                 <label for="exampleInputCat">List Book</label>
-                <div class="selectCss"><Multiselect options={options} displayValue="Country"/></div><br/>
+                <div class="selectCss">
+                <Multiselect 
+                    options={listNameBook} 
+                    selectedValues={valueDefaulBookList}
+                    displayValue="Country"
+                    ref={listIdBook}
+                />
+                </div><br/>
                 <br/>
-                <button>Update</button>
+                <button onClick={() => UpdateBookFunc(user.id ,listIdBook.current.getSelectedItems())}>Update</button>
             </div>
             </>
         )

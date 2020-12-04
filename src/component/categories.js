@@ -17,7 +17,14 @@ function Categories() {
   $(document).ready(function(){
     $(".iconTasks").css("background-color", "");
     $("#iconTasks2").css("background-color", "rgba(0, 134, 60, 0.644)");
+    $("#index1").css("background-color", "rgb(13, 187, 85)");
   });
+
+  function changeColorBtn() {
+    setTimeout(function(){
+      $("#index1").css("background-color", "");
+    }, 100);
+  }
   //const dispatch = useDispatch(); 
   //const listCat = useSelector(state => state);
   //console.log(listCat);
@@ -211,8 +218,9 @@ function Categories() {
 
     return (
       arr.map((item, index) => {
+        var idStr = "index" + item;
         return (
-          <button class="phanTrangBtn" onClick={() => {dispatch(ChangeListCatByPageIndex(item))}}>{item}</button>
+          <button class="phanTrangBtn" id={idStr} onClick={() => {dispatch(ChangeListCatByPageIndex(item)); changeColorBtn()}}>{item}</button>
         )
       })
     )
@@ -238,7 +246,7 @@ function Categories() {
         
       </table>
       </div>
-      <div class="phantrangMe">
+      <div class="phantrangCategory">
            {paginationFunc()}
             {/* <button class="phanTrangBtn" ><Link to="#"><BsFillSkipBackwardFill /></Link></button>
                   {paginationFunc()}

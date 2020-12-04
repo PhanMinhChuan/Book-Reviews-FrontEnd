@@ -13,7 +13,14 @@ function Comment() {
   $(document).ready(function(){
     $(".iconTasks").css("background-color", "");
     $("#iconTasks6").css("background-color", "rgba(0, 134, 60, 0.644)");
+    $("#index1").css("background-color", "rgb(13, 187, 85)");
   });
+
+  function changeColorBtn() {
+    setTimeout(function(){
+      $("#index1").css("background-color", "");
+    }, 100);
+  }
 
   const dispatch = useDispatch(); 
   let [comment, setComment] = useState({});
@@ -67,8 +74,9 @@ function Comment() {
 
     return (
       arr.map((item, index) => {
+        var idStr = "index" + item;
         return (
-          <button class="phanTrangBtn" onClick={() => {dispatch(ChangeListCommentByPageIndex(item))}}>{item}</button>
+          <button class="phanTrangBtn" id={idStr} onClick={() => {dispatch(ChangeListCommentByPageIndex(item)); changeColorBtn()}}>{item}</button>
         )
       })
     )
@@ -92,7 +100,7 @@ function Comment() {
         {getComment()}
       </table>
       </div>
-      <div class="phantrangMe">
+      <div class="phantrangComment">
            {paginationFunc()}
             {/* <button class="phanTrangBtn" ><Link to="#"><BsFillSkipBackwardFill /></Link></button>
                  

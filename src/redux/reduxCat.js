@@ -192,12 +192,34 @@ export function ShowCatSize() {
         }
         Axios.put('http://localhost:8080/cats', data, config)
         .then(function (asd) {
-            localStorage.setItem('index', asd.data);
+            localStorage.setItem('index', asd.data.length);
             //index = asd.data;
         })  
         
     index = localStorage.getItem('index');
+    console.log("Asdadasd");
+    console.log(index);
     return index;
+}
+
+export function GetCatListFromDB() {
+    var index = 0;
+    var data = {};
+    var config = {
+        method: 'PUT',
+        headers: {
+        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        'Content-Type': 'application/json'
+        }
+    }
+    Axios.put('http://localhost:8080/cats', data, config)
+    .then(function (asd) {
+        localStorage.setItem('listCat', JSON.stringify(asd.data));
+    })  
+
+    const jsonCatNameList = localStorage.getItem('listCat');
+    const getCatNameList = JSON.parse(jsonCatNameList);
+    return getCatNameList;
 }
 
 // export function GetIndexPage (id) {

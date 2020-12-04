@@ -64,3 +64,28 @@ export function loadListAuthorByPageIndex(listAuthor) {
         payload: listAuthor
     }
 }
+
+export function GetAuthorListFromDB() {
+    var data = {};
+    var AuthorNameList = [];
+    var config = {
+        method: 'PUT',
+        headers: {
+        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        'Content-Type': 'application/json'
+        }
+    }
+    Axios.put('http://localhost:8080/authors', data, config)
+    .then(function (responds) {
+        for (var i = 0; i <= responds.data.length; i++) {
+            if (responds.data[i] != null) {
+                AuthorNameList.push({label: responds.data[i].name});
+            }
+        }
+        localStorage.setItem('authorList', JSON.stringify(AuthorNameList));
+    }) 
+
+    const jsonAuthorNameList = localStorage.getItem('authorList');
+    const getAuthorNameList = JSON.parse(jsonAuthorNameList);
+    return getAuthorNameList;
+}
