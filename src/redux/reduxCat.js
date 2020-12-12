@@ -13,7 +13,7 @@ import {useDispatch} from 'react-redux';
 //         method: 'GET',
 //         data: {},
 //         headers: {
-//         "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+//         "Authorization": Token,
 //         'Content-Type': 'application/json'
 //         },
 //     })
@@ -37,12 +37,13 @@ import {useDispatch} from 'react-redux';
 // }
 
 export function ShowCat() {
+    var Token = localStorage.getItem('Token');
     return async(dispatch) => {
         Axios.get('http://localhost:8080/cats',  {
             method: 'GET',
             data: {},
             headers: {
-                "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+                "Authorization": Token,
                 'Content-Type': 'application/json'
             },
         })
@@ -62,7 +63,7 @@ export function ShowCat() {
         //     method: 'GET',
         //     data: {},
         //     headers: {
-        //         "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        //         "Authorization": Token,
         //         'Content-Type': 'application/json'
         //     },
         // }).then((asdwe) => asdwe.data)
@@ -75,7 +76,7 @@ export function ShowCat() {
         //     method: 'GET',
         //     data: {},
         //     headers: {
-        //         "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        //         "Authorization": Token,
         //         'Content-Type': 'application/json'
         //     },
         // })
@@ -136,6 +137,7 @@ export function ShowCat() {
 
 export function GetListCat (listCat) {
     //console.log(listCat);
+    
     return {
         type: "showCat",
         payload: listCat
@@ -181,12 +183,13 @@ export function GetListCat (listCat) {
 }
 
 export function ShowCatSize() {
+    var Token = localStorage.getItem('Token');
     var index = 0;
         var data = {};
         var config = {
             method: 'PUT',
             headers: {
-            "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+            "Authorization": Token,
             'Content-Type': 'application/json'
             }
         }
@@ -197,18 +200,19 @@ export function ShowCatSize() {
         })  
         
     index = localStorage.getItem('index');
-    console.log("Asdadasd");
-    console.log(index);
+    //console.log("Asdadasd");
+    //console.log(index);
     return index;
 }
 
 export function GetCatListFromDB() {
+    var Token = localStorage.getItem('Token');
     var index = 0;
     var data = {};
     var config = {
         method: 'PUT',
         headers: {
-        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        "Authorization": Token,
         'Content-Type': 'application/json'
         }
     }
@@ -233,7 +237,7 @@ export function ChangeListCatByPageIndex (id) {
     //         method: 'GET',
     //         data: {},
     //         headers: {
-    //             "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+    //             "Authorization": Token,
     //             'Content-Type': 'application/json'
     //         },
     //     })
@@ -250,12 +254,13 @@ export function ChangeListCatByPageIndex (id) {
     //const sizeListCat = JSON.parse(jsonSizeCat);
     //return sizeListCat;
     //alert(id);
+    var Token = localStorage.getItem('Token');
     return async(dispatch) => {
         Axios.get('http://localhost:8080/cats?page=' + (id-1)+ '&size=7', {
             method: 'GET',
             data: {},
             headers: {
-                "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+                "Authorization": Token,
                 'Content-Type': 'application/json'
             },
         })
@@ -274,9 +279,10 @@ export function loadListCatByPageIndex(sizeListCat) {
 }
 
 export function delFunc(id) {
+    var Token = localStorage.getItem('Token');
     Axios.delete('http://localhost:8080/cats/' + id, {
       headers: {
-        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        "Authorization": Token,
       },
     })
     .then(function (response) {
@@ -289,6 +295,7 @@ export function delFunc(id) {
 }
 
 export function addFunc(catName) {
+    var Token = localStorage.getItem('Token');
     //e.preventDefault();
     //alert(stringCat.current.value);
     //alert(catName);
@@ -296,7 +303,7 @@ export function addFunc(catName) {
     var data = {name: catName};
     Axios.post('http://localhost:8080/cats', JSON.stringify(data),{
       headers: {
-        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        "Authorization": Token,
         'Content-Type': 'application/json'
       },
       })
@@ -310,11 +317,12 @@ export function addFunc(catName) {
 }
 
 export function GetObjByIdEx (id) {
+    var Token = localStorage.getItem('Token');
     alert(id);
     var str = [];
     fetch.get('http://localhost:8080/cats/' + id, {
     headers: {
-    "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+    "Authorization": Token,
     },
     responseType: 'json',
     })
@@ -334,12 +342,13 @@ export function GetObjByIdEx (id) {
 }
 
 export function GetObjById(id) {
+    var Token = localStorage.getItem('Token');
     return async(dispatch) => {
         Axios.get('http://localhost:8080/cats/' + id,  {
             method: 'GET',
             data: {},
             headers: {
-                "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+                "Authorization": Token,
                 'Content-Type': 'application/json'
             },
         })
@@ -360,16 +369,16 @@ export function GetListCatasd (catObj) {
 }
 
 export function UpdateFunc (id, catName) {
-    alert(id + catName);
+    var Token = localStorage.getItem('Token');
     var data = {name: catName};
     Axios.put('http://localhost:8080/cats/' + id, JSON.stringify(data),{
       headers: {
-        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        "Authorization": Token,
         'Content-Type': 'application/json'
       },
       })
       .then(function (response) {
-        alert("update Working!");
+        //alert("update Working!");
         window.location = "/cat";
       })
       .catch(function (error) {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { VscAccount } from "react-icons/vsc";
 import { AiFillContacts, AiOutlineHome, AiOutlineUserAdd} from "react-icons/ai";
@@ -7,10 +7,21 @@ import { FaUserEdit, FaUserCircle} from "react-icons/fa";
 import $ from 'jquery'; 
 
 function Home() {
+
+  // function loadPage() {
+  //   window.location = "/cat";
+  // }
+  // var Token = localStorage.getItem('Token');
+
+  // useEffect(()=>{
+  //   loadPage();
+  // }, Token)
+
   $(document).ready(function(){
     $(".iconTasks").css("background-color", "");
     $("#iconTasks1").css("background-color", "rgba(0, 134, 60, 0.644)");
   });
+
     return (
       <>
         <div class= "formData">

@@ -41,7 +41,7 @@ function ContactChange( {match} ) {
                 <label for="exampleInputCat">Phone (*)</label><br/>
                 <input name="name" type="text" id="exampleInputEmail1" style={{ width: '425px', marginBottom: "20px", height: 'height: 35px'}} defaultValue={contact.phoneNumber} ref={phone}></input> &ensp;<br/>
                 
-                <button onClick={() => UpdateContactFunction(match.params.id, facebook.current.value, youtube.current.value, gmail.current.value, address.current.value, phone.current.value)}>Update</button>
+                <button onClick={() => {if (window.confirm('Are you sure you wish to update this item?')) UpdateContactFunction(match.params.id, facebook.current.value, youtube.current.value, gmail.current.value, address.current.value, phone.current.value)}}>Update</button>
             </div>
         </>    
         );

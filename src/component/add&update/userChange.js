@@ -13,6 +13,7 @@ function UserChange( {match} ) {
     const listIdBook = useRef();
 
     var listNameBook = GetBookListFromDB();
+    console.log(listNameBook);
     
     //Get List Book From Object User
     const dispatch = useDispatch(); 
@@ -69,7 +70,7 @@ function UserChange( {match} ) {
                 />
                 </div><br/>
                 <br/>
-                <button onClick={() => UpdateBookFunc(user.id ,listIdBook.current.getSelectedItems())}>Update</button>
+                <button onClick={() => {if (window.confirm('Are you sure you wish to update this item?')) UpdateBookFunc(user.id ,listIdBook.current.getSelectedItems())}}>Update</button>
             </div>
             </>
         )

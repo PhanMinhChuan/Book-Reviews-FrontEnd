@@ -1,13 +1,15 @@
 import Axios from 'axios';
+import {GetAuthorByIdForBook} from './reduxAuthor.js'
 
 
 export function ShowBooks() {
     return async(dispatch) => {
+        var Token = localStorage.getItem('Token');
         Axios.get('http://localhost:8080/books?page=0&size=5',  {
             method: 'GET',
             data: {},
             headers: {
-                "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+                "Authorization": Token,
                 'Content-Type': 'application/json'
             },
         })
@@ -25,12 +27,13 @@ export function sendActionShowToRedux(listBook) {
 }
 
 export function GetBookSize() {
+    var Token = localStorage.getItem('Token');
     var index = 0;
         var data = {};
         var config = {
             method: 'PUT',
             headers: {
-            "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+            "Authorization": Token,
             'Content-Type': 'application/json'
             }
         }
@@ -44,12 +47,13 @@ export function GetBookSize() {
 }
 
 export function ChangeListBookByPageIndex(id) {
+    var Token = localStorage.getItem('Token');
     return async(dispatch) => {
         Axios.get('http://localhost:8080/books?page=' + (id-1)+ '&size=5', {
             method: 'GET',
             data: {},
             headers: {
-                "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+                "Authorization": Token,
                 'Content-Type': 'application/json'
             },
         })
@@ -67,12 +71,13 @@ export function loadListBookByPageIndex(listUser) {
 }
 
 export function GetBookListFromDB() {
+    var Token = localStorage.getItem('Token');
     var data = {};
     var bookNameList = [];
     var config = {
         method: 'PUT',
         headers: {
-        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        "Authorization": Token,
         'Content-Type': 'application/json'
         }
     }
@@ -92,28 +97,31 @@ export function GetBookListFromDB() {
     return getBookNameList;
 }
 
-export function ChangeStatusBookByPageIndex(id) {
+export function ChangeStatusBookByPageIndex(id, Token) {
+    //var Token = localStorage.getItem('Token');
     Axios.post('http://localhost:8080/books/' + id,  {
-            method: 'POST',
-            data: {},
             headers: {
-                "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+                "Authorization": Token,
                 'Content-Type': 'application/json'
             },
         })
             .then(function (responds) {
                 window.location = "/book";
-            })
+            })  
+            .catch(function (error) {
+                console.log(error);
+              })
 }
 
 export function DeleteFunction(id) {
+    var Token = localStorage.getItem('Token');
     Axios.delete('http://localhost:8080/books/' + id, {
       headers: {
-        "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+        "Authorization": Token,
       },
     })
     .then(function (response) {
-      alert("delete Working!"); 
+      //alert("delete Working!"); 
       window.location = "/book";
     })
     .catch(function (error) {
@@ -121,7 +129,86 @@ export function DeleteFunction(id) {
     })
 }
 
-export function AddFunction(id, iex) {
-    console.log(id);
-    console.log(iex);
+export function AddFunction(bookName, bookDescription, bookDetail, listCat, authorLabel, img) {
+    var Token = localStorage.getItem('Token');
+    var authorasd;
+
+    if (authorLabel.current.state.value != null) {
+        var authorId = authorLabel.current.state.value.id;
+        authorasd = GetAuthorByIdForBook(authorId);
+        console.log(authorasd);
+    }
+
+    if (img.current.files.length > 0) {
+        var image = img.current.files[0].name;
+    }
+    
+    var data = {name: bookName, description: bookDescription, detail : bookDetail, categories: listCat, authors: authorasd, image: image};
+    console.log(JSON.stringify(data));
+    Axios.post('http://localhost:8080/books', JSON.stringify(data),{
+      headers: {
+        "Authorization": Token,
+        'Content-Type': 'application/json'
+      },
+      })
+      .then(function (response) {
+        alert("add Working!");
+        window.location = "/book";
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+}
+
+export function GetBookById(id) {
+    var Token = localStorage.getItem('Token');
+    return async(dispatch) => {
+        Axios.get('http://localhost:8080/books/' + id,  {
+            method: 'GET',
+            data: {},
+            headers: {
+                "Authorization": Token,
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(function (responds) {
+                dispatch(sendActionShowBookToRedux(responds.data));
+            })
+    }
+}
+
+export function sendActionShowBookToRedux(Author) {
+    return {
+        type: "getObjBook",
+        payload: Author
+    }
+}
+
+export function UpdateBookFunction(bookId, bookName, bookDescription, bookDetail, listCat, authorLabel, img) {
+    var Token = localStorage.getItem('Token');
+    var authorasd;
+
+    if (authorLabel.current.state.value != null) {
+        var authorId = authorLabel.current.state.value.id;
+        authorasd = GetAuthorByIdForBook(authorId);
+    }
+
+    if (img.current.files.length > 0) {
+        var imageaaaa = img.current.files[0].name;
+    }
+    
+    var data = {name: bookName, description: bookDescription, detail : bookDetail, categories: listCat, author: authorasd, image: imageaaaa};
+    Axios.put('http://localhost:8080/books/' + bookId, JSON.stringify(data),{
+      headers: {
+        "Authorization": Token,
+        'Content-Type': 'application/json'
+      },
+      })
+      .then(function (response) {
+        //alert("Update Working!");
+        window.location = "/book";
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
 }

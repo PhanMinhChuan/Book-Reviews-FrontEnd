@@ -16,7 +16,7 @@ function CategoriesAdd( {match} ) {
   //   var data = {name: stringCat.current.value};
   //   Axios.post('http://localhost:8080/cats', JSON.stringify(data),{
   //     headers: {
-  //       "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+  //       "Authorization": Token,
   //       'Content-Type': 'application/json'
   //     },
   //     })
@@ -39,7 +39,7 @@ function CategoriesAdd( {match} ) {
     if (match.params.id != null) {
       // Axios.get('http://localhost:8080/cats/' + match.params.id, {
       // headers: {
-      //   "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+      //   "Authorization": Token,
       // },
       // responseType: 'json',
       // })
@@ -81,7 +81,7 @@ function CategoriesAdd( {match} ) {
       <div class="formDataAddCat">
         <label for="exampleInputCat">Category (*)</label><br/>
         <input name="name" type="text" id="exampleInputEmail1" style={{width: '425px', marginBottom: "10px", height: 'height: 35px'}} defaultValue={cat.name} ref={stringCat}></input><br/>
-        <button onClick={() => UpdateFunc(match.params.id, stringCat.current.value)}>Update</button>
+        <button onClick={() => {if (window.confirm('Are you sure you wish to update this item?')) UpdateFunc(match.params.id, stringCat.current.value)}}>Update</button>
       </div>
     </>
     );

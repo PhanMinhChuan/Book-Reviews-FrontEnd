@@ -8,7 +8,7 @@ import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from "react-icons/bs";
 
 import {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {ShowAuthors, GetAuthorSize, ChangeListAuthorByPageIndex} from '../redux/reduxAuthor.js';
+import {ShowAuthors, GetAuthorSize, ChangeListAuthorByPageIndex, DeletedAuthorFunc} from '../redux/reduxAuthor.js';
 import $ from 'jquery';
 
 function Author() {
@@ -51,8 +51,8 @@ function Author() {
           <td>{item.sex}</td>
           <td>{catName}</td>
           <td>
-            <button class="deletedBtn"><AiFillDelete/></button>
             <Link to={`/authorChange/${item.id}`} ><button class="updatedBtn"><GrUpdate/></button></Link>
+            <button class="deletedBtn" onClick={() => {if (window.confirm('Are you sure you wish to delete this item?')) DeletedAuthorFunc(item.id)}}><AiFillDelete/></button>
           </td>
           </tr>
         )
@@ -93,8 +93,8 @@ function Author() {
           <th style={{width:'20%'}}>Name</th>
           <th style={{width:'20%'}}>Birth</th>
           <th style={{width:'20%'}}>Sex</th>
-          <th style={{width:'15%'}}>Categories</th>
-          <th style={{width:'15%'}}>Funcion</th>
+          <th style={{width:'17%'}}>Categories</th>
+          <th style={{width:'13%'}}>Funcion</th>
         </tr>
         {getAuthor()}
       </table>

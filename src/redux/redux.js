@@ -21,12 +21,18 @@ export function reducer(state = defaultState, action) {
         case 'showBook': 
             state = action.payload;
             return state;
+        case 'getObjBook':
+            var book = action.payload;
+            return book
         case 'changeListBookByIndex':
             state = action.payload;
             return state;
         case 'showAuthor': 
             state = action.payload;
             return state;
+        case 'getObjAuthor': 
+            var author = action.payload;
+            return author 
         case 'changeListAuthorByIndex':
             state = action.payload;
             return state;

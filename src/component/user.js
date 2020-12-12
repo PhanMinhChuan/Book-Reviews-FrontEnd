@@ -38,11 +38,11 @@ function User() {
       listUser.map((item, index) => {
         var bookName = "";
         if (item.books != null) {
-          for (var i = 0; i < item.books.length; i++) {
+            for (var i = 0; i < item.books.length; i++) {
             if (i != item.books.length) {
-              bookName += "["+item.books[i].name +"] ";
+                bookName += "["+item.books[i].name +"] ";
             }
-          }
+            }
         }
         if (item.username !== "admin") {
           return (
@@ -53,8 +53,8 @@ function User() {
                   <td>{bookName}</td>
                   <td>{item.role}</td>
                   <td>
-                    <button class="deletedBtn" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?'))  DeletedUserFunc(item.id) }}><AiFillDelete/></button>
                     <Link to={`/userChange/${item.id}`} ><button class="updatedBtn"><GrUpdate/></button></Link>
+                    <button class="deletedBtn" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?'))  DeletedUserFunc(item.id) }}><AiFillDelete/></button>
                   </td>
                   </tr>
                  )
@@ -100,7 +100,7 @@ function User() {
       <div class="titleNameForm">
         <h2>Users Table</h2>
         <p style={{marginTop: '-3px'}}>Show class .table</p>
-      </div><br/><br/><br/><br/>
+      </div><br/><br/><br/>
       <Link to="/userChange" class="addBtn">< HiUserAdd class="borderCss"/></Link>
       <div class="formData">
       <table>

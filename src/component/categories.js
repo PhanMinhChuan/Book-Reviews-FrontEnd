@@ -37,7 +37,7 @@ function Categories() {
 
   //app.use('/api/**', proxy({ target: "http://localhost:8080" }));
   //let [post, setPost] = useState([]); //{id: 1, name: "cc"} , {id: 2, name: "cl"}
-  //Axios.defaults.headers.common["Authorization"] = this.state.token;'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA';
+  //Axios.defaults.headers.common["Authorization"] = this.state.token;Token;
 
   // useEffect(() => {
   //   Axios.get('http://localhost:8080/cats', {
@@ -47,7 +47,7 @@ function Categories() {
   //     //contentType: 'application/json', 
   //     //responseType: 'application/json',
   //     headers: {
-  //       "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+  //       "Authorization": Token,
   //       //'Access-Control-Allow-Origin': 'http://localhost:3000',
   //       //'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
   //       //"proxy": "http://localhost:8080"
@@ -67,7 +67,7 @@ function Categories() {
   // var config = {
   //   method: 'PUT',
   //   headers: {
-  //     "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+  //     "Authorization": Token,
   //     'Content-Type': 'application/json'
   //   }
   // }
@@ -163,8 +163,8 @@ function Categories() {
               <td>{item.id}</td>
               <td>{item.name}</td>
               <td>
-                <button class="deletedBtn" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?'))  delFunc(item.id) } }><AiFillDelete /></button>
                 <Link to={`/catAdd/${item.id}`} ><button class="updatedBtn" ><GrUpdate/> </button></Link>
+                <button class="deletedBtn" onClick={() => { if (window.confirm('Are you sure you wish to delete this item?'))  delFunc(item.id) } }><AiFillDelete /></button>
               </td>
             </tr>
           )
@@ -177,7 +177,7 @@ function Categories() {
   // function delFunc(id) {
   //   Axios.delete('http://localhost:8080/cats/' + id, {
   //     headers: {
-  //       "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+  //       "Authorization": Token,
   //     },
   //   })
   //   .then(function (response) {
@@ -196,7 +196,7 @@ function Categories() {
   //     method: 'GET',
   //     data: {},
   //     headers: {
-  //       "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNjA2ODgyMTUyLCJleHAiOjE2MDc0ODY5NTJ9.pqtJNdc_iy7vwEDOHFMxWr0qZtUb8wQDoPw_r5lyl-EfnQaiWacUbWxJ9TVyfS9v-VBqJkT7fRsfYQdq4CpNpA',
+  //       "Authorization": Token,
   //       'Content-Type': 'application/json'
   //     },
   //   })

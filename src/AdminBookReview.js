@@ -7,7 +7,7 @@ import {
   Route
 } from "react-router-dom";
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Home from './component/home.js';
 import Categories from './component/categories.js';
 import CategoriesChange from './component/add&update/categoriesChange.js';
@@ -30,7 +30,7 @@ import {useDispatch} from 'react-redux';
 import {ShowCat} from './redux/reduxCat.js';
 import {ShowBook} from './redux/reduxBook.js';
 import './signin.css'
-import {CheckApiLogin} from './redux/reduxLogin.js';
+import {CheckApiLogin, LogOutFun, GetUsername} from './redux/reduxLogin.js';
 
 
 
@@ -58,9 +58,22 @@ function App() {
 }
 
 function Page() {
-  var index = localStorage.getItem('loginIndex');
-  console.log(index);
-  if (index == 1) {
+
+  const username = useRef();
+  const password = useRef();
+
+  var Token = localStorage.getItem('Token');
+  var nameStr =  GetUsername(Token);
+
+  var image = "";
+  if (nameStr == "admin") {
+    nameStr = "Minh Chuan";
+    image = "https://images-na.ssl-images-amazon.com/images/I/619A8hOoG3L._SL1152_.jpg";
+  } else {
+    image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQARPRzahfEwt6xf7y7V2wDIWSKRGb0PmE3ow&usqp=CAU";
+  }
+
+  if (Token != null) {
     return (
     <div>
       <header className="App-MenuTask-Me">
@@ -81,9 +94,9 @@ function Page() {
       </header>
       <div className="App-header-posion">
         <header className="App-header-Me">
-        <button class="btnLogin" onClick={() => CheckApiLogin(0)}>Log Out</button>
-        <span class="usernameLogin">Minh Chuan</span>
-        <span class="iconLogin"><img src="https://www.festivalinfo.nl/img/upload/c/b/shawn_mendes.jpg"  style={{ height: '50px', width: '50px', borderRadius: "50%"}}/></span>
+        <button class="btnLogin" onClick={() => LogOutFun()}>Log Out</button>
+        <span class="usernameLogin">{nameStr}</span>
+        <span class="iconLogin"><img src={image}  style={{ height: '50px', width: '50px', borderRadius: "50%"}}/></span>
         </header>
       </div>
       
@@ -108,7 +121,7 @@ function Page() {
         </Switch>
       </main>
       <footer className="App-footer-Me">
-      <p>2020 © Ample Admin brought to you by Minh Chuan |  <IoLogoGithub/></p>
+      <p>2020 © my Admin brought to you by Minh Chuan |  <IoLogoGithub/></p>
       </footer>
     </div>
     
@@ -121,11 +134,13 @@ function Page() {
               <div href="/signin" className="container-sigin" id="container">
                   <div className="form-container sign-in-container">
                       <div className="form-signin">
-                          <h3 style={{color:'#FF0059'}}>LOGIN ADMIN</h3><br/>
-                          <input className="signin-input-thongtin" type="email" placeholder="Email" />
-                          <input className="signin-input-thongtin" type="password" placeholder="Password" />
-                          <a className="a-Forgotyourpassword">Forgot your password?</a><br/>
-                          <button className="button-signin-signup" onClick={() => CheckApiLogin(1)}>Sign In</button>
+                          <h3 class="nameLogin" style={{color:'#FF0059'}}><strong>LOGIN</strong></h3>
+                          <form action="#" onSubmit={() => {CheckApiLogin(username.current.value, password.current.value)}}>
+                            <input className="signin-input-thongtin" type="text" placeholder="Email" ref={username} />
+                            <input className="signin-input-thongtin" type="password" placeholder="Password" ref={password}/><br/><br/>
+                            <a className="a-Forgotyourpassword">Forgot your password?</a><br/><br/>
+                            <button className="button-signin-signup">Sign In</button>
+                          </form>
                       </div>
                   </div>
                   <div className="overlay-container">

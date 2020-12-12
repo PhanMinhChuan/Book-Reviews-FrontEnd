@@ -26,7 +26,8 @@ function Book() {
   }
 
   function BtnAccept(id){
-    ChangeStatusBookByPageIndex(id);
+    var Token = localStorage.getItem('Token');
+    ChangeStatusBookByPageIndex(id, Token);
   }
 
   function BtnUnAccept() {
@@ -41,6 +42,7 @@ function Book() {
 
   const listBookSelector = useSelector(state => state);
   const listBook = Array.from(listBookSelector);
+  console.log(listBook);
 
   function GetBook() {
     return (
@@ -53,8 +55,8 @@ function Book() {
             catName += "[" + item.categories[i].name + "] ";
           }
         }
-        if (item.authors != null) {
-          authorName = item.authors.name;
+        if (item.author != null) {
+          authorName = item.author.name;
         }
 
         if (item.statusBook == "UNAPPROVED") {
@@ -70,8 +72,7 @@ function Book() {
                     <td>
                       <button class="acceptBtn" onClick={() => {BtnAccept(item.id)}}><AiOutlineCarryOut/></button>
                       <button class="deletedBtBook" onClick= {() =>{ if (window.confirm('Are you sure you wish to delete this item?')) DeleteFunction(item.id) }}><AiFillDelete/></button>
-                      <Link to={`/bookChange/${item.id}`} ><button class="updatedBtn" ><GrUpdate/></button></Link>
-                      
+                      <Link to={`/bookChange/${item.id}`} ><button class="updatedBtnBook" ><GrUpdate/></button></Link>
                     </td>
                   </tr>
                   )
@@ -88,7 +89,7 @@ function Book() {
             <td>
               <button class="UnacceptBtn" onClick={() => {BtnUnAccept()}}><AiOutlineCarryOut/></button>
               <button class="deletedBtBook" onClick= {() => { if (window.confirm('Are you sure you wish to delete this item?')) DeleteFunction(item.id)}}><AiFillDelete/></button>
-              <Link to={`/bookChange/${item.id}`} ><button class="updatedBtn" ><GrUpdate/></button></Link>
+              <Link to={`/bookChange/${item.id}`} ><button class="updatedBtnBook" ><GrUpdate/></button></Link>
               
             </td>
           </tr>
@@ -102,7 +103,7 @@ function Book() {
 
   function paginationFunc() {
     var arr = [];
-    var index = GetBookSize();
+    var index = GetBookSize(); 
     var numberOfPages = Math.floor(index / 4);
     for (var i = 1 ; i <= numberOfPages; i++) {
       var index = i;
